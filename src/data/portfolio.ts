@@ -84,7 +84,7 @@ export const skills = [
 
 export const projects = [
   {
-    name: "AOEmulator",
+    name: "Emulator",
     description: {
       es: "Servidor privado completo para el MMORPG Angels Online, reconstruido mediante ingeniería inversa. Implementa networking TCP custom, IA de monstruos con A*, pathfinding, sistema de combate, inventario, gremios y más de 120 opcodes del protocolo original. Las herramientas de RE están escritas en C++ (DLL injection).",
       en: "Full private server for the MMORPG Angels Online, reconstructed via reverse engineering. Implements custom TCP networking, A* monster AI, pathfinding, combat system, inventory, guilds, and 120+ original protocol opcodes. Reverse engineering tools written in C++ (DLL injection).",
@@ -98,7 +98,7 @@ export const projects = [
     type: "Personal",
   },
   {
-    name: "CelestialAO Platform",
+    name: "AO Platform",
     description: {
       es: "Ecosistema full-stack para el servidor privado: portal web (Next.js + TypeScript), API REST (Spring Boot + Java), launcher con auto-update (C# WPF) y herramientas de gestión de assets (Python).",
       en: "Full-stack ecosystem for the private server: web portal (Next.js + TypeScript), REST API (Spring Boot + Java), auto-update launcher (C# WPF), and asset management tools (Python).",
@@ -108,6 +108,48 @@ export const projects = [
       en: ["Web portal with registration and dashboard", "Auto-update with integrity verification", "REST API with Blowfish auth", "Python PAK/SHP asset manager"],
     },
     tags: ["Next.js", "TypeScript", "Spring Boot", "Java", "C#", "WPF", "Python", "MySQL"],
+    github: "https://github.com/Kerro16",
+    type: "Personal",
+  },
+  {
+    name: "AOLauncher",
+    description: {
+      es: "Launcher con auto-actualización para el servidor privado CelestialAO. Descarga parches de forma incremental, verifica integridad por hash, aplica anti-cheat básico y autentica al jugador contra el backend antes de lanzar el cliente.",
+      en: "Auto-update launcher for the CelestialAO private server. Incrementally downloads patches, verifies file integrity by hash, applies basic anti-cheat, and authenticates the player against the backend before launching the client.",
+    },
+    highlights: {
+      es: ["Auto-update incremental con verificación de hash", "Anti-cheat básico integrado", "Autenticación contra API REST (Blowfish)", "Interfaz WPF moderna"],
+      en: ["Incremental auto-update with hash verification", "Built-in basic anti-cheat", "REST API authentication (Blowfish)", "Modern WPF interface"],
+    },
+    tags: ["C#", ".NET 8", "WPF", "Blowfish", "Auto-Update"],
+    github: "https://github.com/Kerro16",
+    type: "Personal",
+  },
+  {
+    name: "AngelsSpy",
+    description: {
+      es: "DLL de ingeniería inversa en C++ que se inyecta en el cliente del MMORPG Angels Online. Hookea las funciones recv y send del proceso para capturar y loguear todos los paquetes de red en tiempo real, permitiendo documentar el protocolo propietario del juego.",
+      en: "C++ reverse engineering DLL injected into the Angels Online MMORPG client. Hooks the process's recv and send functions to capture and log all network packets in real time, enabling documentation of the game's proprietary protocol.",
+    },
+    highlights: {
+      es: ["Hook de recv/send via DLL injection", "Logging en modo RAW y MAPPED_ONLY", "Captura en tiempo real sin modificar el cliente", "Base para documentar 120+ opcodes"],
+      en: ["recv/send hook via DLL injection", "RAW and MAPPED_ONLY logging modes", "Real-time capture without client modification", "Foundation for documenting 120+ opcodes"],
+    },
+    tags: ["C++", "DLL Injection", "Reverse Engineering", "Win32 API", "Network"],
+    github: "https://github.com/Kerro16",
+    type: "Personal",
+  },
+  {
+    name: "AOInyector",
+    description: {
+      es: "Herramienta de inyección de DLL en C++ para el proceso angel.exe. Utiliza CreateRemoteThread para cargar AngelsSpy u ObtainData en el proceso objetivo, simplificando el flujo de captura de paquetes durante la fase de ingeniería inversa.",
+      en: "C++ DLL injection tool targeting the angel.exe process. Uses CreateRemoteThread to load AngelsSpy or ObtainData into the target process, streamlining the packet capture workflow during the reverse engineering phase.",
+    },
+    highlights: {
+      es: ["Inyección via CreateRemoteThread", "Soporte para múltiples DLLs (AngelsSpy / ObtainData)", "Requiere elevación de administrador", "Herramienta CLI liviana"],
+      en: ["Injection via CreateRemoteThread", "Multi-DLL support (AngelsSpy / ObtainData)", "Requires administrator elevation", "Lightweight CLI tool"],
+    },
+    tags: ["C++", "DLL Injection", "Win32 API", "Reverse Engineering", "CLI"],
     github: "https://github.com/Kerro16",
     type: "Personal",
   },
