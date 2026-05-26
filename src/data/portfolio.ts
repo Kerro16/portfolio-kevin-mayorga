@@ -112,10 +112,10 @@ export const projects = [
     type: "Personal",
   },
   {
-    name: "AOLauncher",
+    name: "Launcher",
     description: {
-      es: "Launcher con auto-actualización para el servidor privado CelestialAO. Descarga parches de forma incremental, verifica integridad por hash, aplica anti-cheat básico y autentica al jugador contra el backend antes de lanzar el cliente.",
-      en: "Auto-update launcher for the CelestialAO private server. Incrementally downloads patches, verifies file integrity by hash, applies basic anti-cheat, and authenticates the player against the backend before launching the client.",
+      es: "Launcher con auto-actualización. Descarga parches de forma incremental, verifica integridad por hash, aplica anti-cheat básico y autentica al jugador contra el backend antes de lanzar el cliente.",
+      en: "Auto-update launcher. Incrementally downloads patches, verifies file integrity by hash, applies basic anti-cheat, and authenticates the player against the backend before launching the client.",
     },
     highlights: {
       es: ["Auto-update incremental con verificación de hash", "Anti-cheat básico integrado", "Autenticación contra API REST (Blowfish)", "Interfaz WPF moderna"],
@@ -132,8 +132,8 @@ export const projects = [
       en: "C++ reverse engineering DLL injected into the Angels Online MMORPG client. Hooks the process's recv and send functions to capture and log all network packets in real time, enabling documentation of the game's proprietary protocol.",
     },
     highlights: {
-      es: ["Hook de recv/send via DLL injection", "Logging en modo RAW y MAPPED_ONLY", "Captura en tiempo real sin modificar el cliente", "Base para documentar 120+ opcodes"],
-      en: ["recv/send hook via DLL injection", "RAW and MAPPED_ONLY logging modes", "Real-time capture without client modification", "Foundation for documenting 120+ opcodes"],
+      es: ["Hook de recv/send via DLL injection", "Logging en modo RAW y MAPPED_ONLY", "Captura en tiempo real sin modificar el cliente"],
+      en: ["recv/send hook via DLL injection", "RAW and MAPPED_ONLY logging modes", "Real-time capture without client modification"],
     },
     tags: ["C++", "DLL Injection", "Reverse Engineering", "Win32 API", "Network"],
     github: "https://github.com/Kerro16",
