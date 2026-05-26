@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const TO_EMAIL = "kmayorga1995@gmail.com";
-
 export async function POST(req: NextRequest) {
   if (!process.env.RESEND_API_KEY) {
     return NextResponse.json({ error: "Email service not configured" }, { status: 503 });
@@ -16,6 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   const FROM = process.env.RESEND_FROM ?? "onboarding@resend.dev";
+  const TO_EMAIL = process.env.RESEND_TO ?? "kerrox16@gmail.com";
 
   const { error } = await resend.emails.send({
     from: `Portfolio Contact <${FROM}>`,
@@ -28,7 +27,7 @@ export async function POST(req: NextRequest) {
 
   if (error) {
     console.error("[Contact] Resend error:", error);
-    return NextResponse.json({ error: error.message, detail: error }, { status: 500 });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });
