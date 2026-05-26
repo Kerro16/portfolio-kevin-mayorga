@@ -10,10 +10,21 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Kevin Alexander Mayorga Martínez — Computer Science Engineer specialized in backend, fintech, and systems architecture.",
   keywords: ["Kevin Mayorga", "Ingeniero", "Backend", "Java", "C#", ".NET", "Portfolio", "El Salvador"],
+  metadataBase: new URL("https://kevinmayorga.space"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Kevin Mayorga — Engineer",
     description: "Backend Engineer · Fintech · Systems Architecture",
+    url: "https://kevinmayorga.space",
+    siteName: "Kevin Mayorga Portfolio",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Kevin Mayorga — Computer Science Engineer",
+    description: "Backend Engineer · Fintech · Systems Architecture",
   },
 };
 
