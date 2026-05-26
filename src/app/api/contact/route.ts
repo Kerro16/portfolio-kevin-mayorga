@@ -15,8 +15,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
   }
 
+  const FROM = process.env.RESEND_FROM ?? "onboarding@resend.dev";
+
   const { error } = await resend.emails.send({
-    from: "Portfolio Contact <onboarding@resend.dev>",
+    from: `Portfolio Contact <${FROM}>`,
     to: TO_EMAIL,
     replyTo: email,
     subject: `[Portfolio] Mensaje de ${name}`,
@@ -25,6 +27,7 @@ export async function POST(req: NextRequest) {
   });
 
   if (error) {
+    console.error("[Contact] Resend error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
