@@ -58,7 +58,7 @@ export const experience = [
 export const skills = [
   {
     category: { es: "Lenguajes", en: "Languages" },
-    items: ["Java", "C#", "C++", "Python", "TypeScript", "JavaScript", "Kotlin", "PHP", "Dart", "Bash"],
+    items: ["Java", "Go", "C#", "C++", "Python", "TypeScript", "JavaScript", "Kotlin", "PHP", "Dart", "Bash"],
   },
   {
     category: { es: "Frameworks & Runtimes", en: "Frameworks & Runtimes" },
@@ -66,7 +66,7 @@ export const skills = [
   },
   {
     category: { es: "Bases de datos", en: "Databases" },
-    items: ["MySQL", "Microsoft SQL Server", "IBM DB2", "SQLite", "Firebase"],
+    items: ["MySQL", "PostgreSQL", "PostGIS", "Microsoft SQL Server", "IBM DB2", "SQLite", "Firebase"],
   },
   {
     category: { es: "Cloud & DevOps", en: "Cloud & DevOps" },
@@ -83,6 +83,32 @@ export const skills = [
 ];
 
 export const projects = [
+  {
+    name: "CheckPOS SV",
+    description: {
+      es: "Mapa crowdsourced de El Salvador que muestra qué negocios aceptan tarjeta, Chivo Wallet o solo efectivo — y si su ubicación en Maps sigue siendo válida. Backend en Go con queries geoespaciales nativas via PostGIS (ST_DWithin, ST_MakeEnvelope), frontend Leaflet.js sobre OpenStreetMap sin costo. 5,900+ negocios importados desde OpenStreetMap via Overpass API.",
+      en: "Crowdsourced map of El Salvador showing which businesses accept card, Chivo Wallet, or cash only — and whether their Maps location is still valid. Go backend with native geospatial queries via PostGIS (ST_DWithin, ST_MakeEnvelope), Leaflet.js frontend on OpenStreetMap at zero cost. 5,900+ businesses seeded from OpenStreetMap via Overpass API.",
+    },
+    highlights: {
+      es: [
+        "Queries geoespaciales con ST_DWithin sobre PostGIS a <10ms por radio",
+        "Carga de viewport por bounding box — solo se transfieren los negocios visibles",
+        "Sistema de confianza crowdsourced: reportes de 3 IPs distintos auto-flagean un negocio",
+        "Rate limiting por IP (token bucket), headers de seguridad, gzip 76% compresión",
+        "Importador OSM: 5,900+ negocios de El Salvador via Overpass API con upsert idempotente",
+      ],
+      en: [
+        "Geospatial queries with ST_DWithin on PostGIS at <10ms per radius search",
+        "Viewport bounding-box loading — only visible businesses are transferred",
+        "Crowdsourced trust system: reports from 3 distinct IPs auto-flag a business",
+        "Per-IP rate limiting (token bucket), security headers, 76% gzip compression",
+        "OSM importer: 5,900+ El Salvador businesses via Overpass API with idempotent upsert",
+      ],
+    },
+    tags: ["Go", "PostgreSQL", "PostGIS", "Leaflet.js", "OpenStreetMap", "Docker", "REST API"],
+    github: "https://github.com/Kerro16/checkpos-sv",
+    type: "Personal",
+  },
   {
     name: "Emulator",
     description: {
