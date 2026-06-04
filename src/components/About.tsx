@@ -17,44 +17,59 @@ export default function About() {
     <section id="about" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-mono text-cyan-400 tracking-widest mb-3">{t(ui.about.label)}</p>
+          <p className="text-xs font-mono text-amber-400/60 tracking-widest mb-3">{t(ui.about.label)}</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12">{t(ui.about.title)}</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
+          {/* Bio */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="space-y-4 text-slate-400 leading-relaxed text-sm"
           >
-            <p dangerouslySetInnerHTML={{ __html: t(ui.about.bio1).replace("<strong>", '<strong class="text-slate-200 font-medium">') }} />
+            <p
+              dangerouslySetInnerHTML={{
+                __html: t(ui.about.bio1).replace(
+                  "<strong>",
+                  '<strong class="text-slate-200 font-medium">'
+                ),
+              }}
+            />
             <p>
               {t(ui.about.bio2).split("<cyan>")[0]}
-              <span className="text-cyan-400">{t(ui.about.bio2).split("<cyan>")[1]?.split("</cyan>")[0]}</span>
+              <span className="text-amber-400">
+                {t(ui.about.bio2).split("<cyan>")[1]?.split("</cyan>")[0]}
+              </span>
               {t(ui.about.bio2).split("</cyan>")[1]}
             </p>
             <p>{t(ui.about.bio3)}</p>
-            <p className="text-slate-500 text-xs">{t(ui.about.bio4)}</p>
+            <p className="text-slate-600 text-xs">{t(ui.about.bio4)}</p>
           </motion.div>
 
+          {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid grid-cols-2 gap-6"
           >
             {stats.map((s) => (
-              <div key={s.key} className="glass glass-hover rounded-2xl p-6 text-center">
-                <p className="text-3xl font-bold gradient-text mb-1">{s.value}</p>
-                <p className="text-xs text-slate-500">{t(ui.about.stats[s.key])}</p>
+              <div key={s.key} className="border-l-2 border-amber-400 pl-5">
+                <p className="text-4xl font-bold font-mono text-amber-400 leading-none">
+                  {s.value}
+                </p>
+                <p className="text-[11px] text-slate-600 mt-2 uppercase tracking-wider font-mono">
+                  {t(ui.about.stats[s.key])}
+                </p>
               </div>
             ))}
           </motion.div>

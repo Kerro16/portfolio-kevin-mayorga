@@ -4,8 +4,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ui } from "@/data/translations";
 import { skills } from "@/data/portfolio";
 
-const colorByIndex = ["tag", "tag tag-violet", "tag", "tag tag-green", "tag tag-violet", "tag tag-green"];
-
 export default function Skills() {
   const { t } = useLanguage();
 
@@ -13,31 +11,31 @@ export default function Skills() {
     <section id="skills" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-mono text-cyan-400 tracking-widest mb-3">{t(ui.skills.label)}</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-14">{t(ui.skills.title)}</h2>
+          <p className="text-xs font-mono text-amber-400/60 tracking-widest mb-3">{t(ui.skills.label)}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12">{t(ui.skills.title)}</h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="divide-y divide-white/[0.05]">
           {skills.map((group, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass glass-hover rounded-2xl p-6"
+              transition={{ duration: 0.4, delay: i * 0.06 }}
+              className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-10 py-5"
             >
-              <h3 className="text-xs font-mono text-slate-500 tracking-widest uppercase mb-4">
+              <p className="font-mono text-[10px] text-amber-400/60 uppercase tracking-widest sm:w-44 sm:shrink-0 sm:pt-1.5">
                 {t(group.category)}
-              </h3>
-              <div className="flex flex-wrap gap-2">
+              </p>
+              <div className="flex flex-wrap gap-1.5">
                 {group.items.map((item) => (
-                  <span key={item} className={colorByIndex[i] ?? "tag"}>{item}</span>
+                  <span key={item} className="tag">{item}</span>
                 ))}
               </div>
             </motion.div>

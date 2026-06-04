@@ -28,12 +28,14 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass border-b border-cyan-400/10 py-3" : "bg-transparent py-5"
+        scrolled
+          ? "glass border-b border-white/[0.05] py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-sm font-mono font-semibold gradient-text">
-          KM<span className="text-cyan-400">.</span>dev
+        <a href="#" className="text-sm font-mono font-bold gradient-text tracking-tight">
+          KM<span className="text-white/40">.</span>dev
         </a>
 
         {/* Desktop nav */}
@@ -42,7 +44,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm text-slate-400 hover:text-cyan-400 transition-colors duration-200"
+                className="text-sm text-slate-500 hover:text-amber-400 transition-colors duration-200"
               >
                 {l.label}
               </a>
@@ -51,34 +53,33 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
-          {/* Language toggle */}
           <button
             onClick={() => setLang(otherLang)}
-            className="flex items-center gap-1.5 text-xs font-mono text-slate-500 hover:text-cyan-400 transition-colors px-2 py-1 rounded-lg border border-slate-800 hover:border-cyan-400/30"
+            className="flex items-center gap-1.5 text-xs font-mono text-slate-600 hover:text-amber-400 transition-colors px-2 py-1 border border-slate-800 hover:border-amber-400/30"
             title={otherLang === "en" ? "Switch to English" : "Cambiar a Español"}
           >
-            <Globe size={12} />
+            <Globe size={11} />
             <span className="uppercase">{otherLang}</span>
           </button>
 
           <a
             href="mailto:kmayorga1995@gmail.com"
-            className="text-xs font-medium px-4 py-2 rounded-full border border-cyan-400/40 text-cyan-400 hover:bg-cyan-400/10 transition-colors duration-200"
+            className="text-xs font-medium px-4 py-2 border border-amber-400/30 text-amber-400 hover:bg-amber-400/10 transition-colors duration-200"
           >
             {t(ui.nav.hire)}
           </a>
         </div>
 
-        {/* Mobile */}
+        {/* Mobile controls */}
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={() => setLang(otherLang)}
-            className="text-xs font-mono text-slate-500 hover:text-cyan-400 transition-colors uppercase"
+            className="text-xs font-mono text-slate-600 hover:text-amber-400 transition-colors uppercase"
           >
             {otherLang}
           </button>
           <button
-            className="text-slate-400 hover:text-cyan-400 transition-colors"
+            className="text-slate-500 hover:text-amber-400 transition-colors"
             onClick={() => setOpen(!open)}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
@@ -87,12 +88,12 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden glass border-t border-cyan-400/10 px-6 py-4 space-y-3">
+        <div className="md:hidden glass border-t border-white/[0.05] px-6 py-4 space-y-3">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="block text-sm text-slate-300 hover:text-cyan-400 transition-colors py-1"
+              className="block text-sm text-slate-400 hover:text-amber-400 transition-colors py-1"
               onClick={() => setOpen(false)}
             >
               {l.label}

@@ -8,70 +8,59 @@ export default function Experience() {
   const { t } = useLanguage();
 
   return (
-    <section id="experience" className="py-24 px-6 bg-slate-900/30">
+    <section id="experience" className="py-24 px-6 bg-white/[0.015]">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <p className="text-xs font-mono text-cyan-400 tracking-widest mb-3">{t(ui.experience.label)}</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-14">{t(ui.experience.title)}</h2>
+          <p className="text-xs font-mono text-amber-400/60 tracking-widest mb-3">{t(ui.experience.label)}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12">{t(ui.experience.title)}</h2>
         </motion.div>
 
-        <div className="relative pl-8">
-          <div className="absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-cyan-400 via-violet-400/40 to-transparent" />
+        <div className="space-y-5">
+          {experience.map((job, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="glass glass-hover rounded-xl p-6 sm:p-8 relative overflow-hidden"
+            >
+              {/* Watermark number */}
+              <span className="absolute -bottom-3 right-5 font-mono font-bold text-8xl text-white/[0.025] select-none leading-none pointer-events-none">
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-          <div className="space-y-8">
-            {experience.map((job, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative"
-              >
-                <div className="absolute -left-8 top-5 flex items-center justify-center">
-                  <div
-                    className={`h-3 w-3 rounded-full border-2 ${
-                      job.current
-                        ? "border-cyan-400 bg-cyan-400/30"
-                        : "border-slate-600 bg-slate-900"
-                    }`}
-                  />
+              <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                <div>
+                  <p className="text-amber-400 font-semibold">
+                    {typeof job.company === "string" ? job.company : t(job.company)}
+                  </p>
+                  <h3 className="text-slate-200 font-medium text-sm mt-0.5">{t(job.role)}</h3>
                 </div>
-
-                <div className="glass glass-hover rounded-2xl p-6 sm:p-8">
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
-                    <div>
-                      <h3 className="text-base font-semibold text-slate-100">{t(job.role)}</h3>
-                      <p className="text-cyan-400 text-sm font-medium">
-                        {typeof job.company === "string" ? job.company : t(job.company)}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {job.current && (
-                        <span className="tag tag-green">{t(ui.experience.current)}</span>
-                      )}
-                      <span className="text-xs text-slate-500 font-mono whitespace-nowrap">
-                        {job.period}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-slate-400 text-sm leading-relaxed mb-5">{t(job.description)}</p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {job.tags.map((tag) => (
-                      <span key={tag} className="tag">{tag}</span>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-2 shrink-0">
+                  {job.current && (
+                    <span className="tag tag-green">{t(ui.experience.current)}</span>
+                  )}
+                  <span className="text-xs text-slate-600 font-mono whitespace-nowrap">
+                    {job.period}
+                  </span>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+
+              <p className="text-slate-400 text-sm leading-relaxed mb-5">{t(job.description)}</p>
+
+              <div className="flex flex-wrap gap-1.5">
+                {job.tags.map((tag) => (
+                  <span key={tag} className="tag">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

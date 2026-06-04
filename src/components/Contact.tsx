@@ -14,10 +14,10 @@ export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
 
   const contactItems = [
-    { icon: Mail,    label: "Email",                value: personal.email,      href: `mailto:${personal.email}` },
-    { icon: Phone,   label: "Teléfono / Phone",     value: personal.phone,      href: `tel:${personal.phone}` },
-    { icon: MapPin,  label: t(ui.contact.location), value: personal.location,   href: null },
-    { icon: Code2,   label: "GitHub",               value: "github.com/Kerro16", href: personal.github },
+    { icon: Mail,   label: "Email",                value: personal.email,       href: `mailto:${personal.email}` },
+    { icon: Phone,  label: "Teléfono / Phone",     value: personal.phone,       href: `tel:${personal.phone}` },
+    { icon: MapPin, label: t(ui.contact.location), value: personal.location,    href: null },
+    { icon: Code2,  label: "GitHub",               value: "github.com/Kerro16", href: personal.github },
   ];
 
   async function handleSubmit(e: React.FormEvent) {
@@ -37,56 +37,56 @@ export default function Contact() {
   }
 
   const inputClass =
-    "w-full bg-slate-800/60 border border-slate-700/60 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-400/60 transition-colors";
+    "w-full bg-white/[0.03] border border-white/[0.07] px-4 py-3 text-sm text-slate-200 placeholder-slate-700 focus:outline-none focus:border-amber-400/50 transition-colors";
 
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-mono text-cyan-400 tracking-widest mb-3">{t(ui.contact.label)}</p>
+          <p className="text-xs font-mono text-amber-400/60 tracking-widest mb-3">{t(ui.contact.label)}</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">{t(ui.contact.title)}</h2>
-          <p className="text-slate-500 max-w-md mx-auto text-sm leading-relaxed">{t(ui.contact.subtitle)}</p>
+          <p className="text-slate-600 max-w-md mx-auto text-sm leading-relaxed">{t(ui.contact.subtitle)}</p>
         </motion.div>
 
         <div className="max-w-2xl mx-auto">
-          {/* Contact info cards */}
-          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+          {/* Contact info */}
+          <div className="grid sm:grid-cols-2 gap-3 mb-10">
             {contactItems.map((item, i) => (
               <motion.div
                 key={item.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.4, delay: i * 0.07 }}
               >
                 {item.href ? (
                   <a
                     href={item.href}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="glass glass-hover rounded-2xl p-5 flex items-center gap-4 group block"
+                    className="glass glass-hover p-4 flex items-center gap-4 group block"
                   >
-                    <div className="p-2.5 rounded-xl bg-cyan-400/10 text-cyan-400 group-hover:bg-cyan-400/20 transition-colors">
-                      <item.icon size={18} />
+                    <div className="p-2 bg-amber-400/10 text-amber-400 group-hover:bg-amber-400/20 transition-colors shrink-0">
+                      <item.icon size={16} />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[11px] text-slate-600 uppercase tracking-wide font-mono">{item.label}</p>
+                      <p className="text-[10px] text-slate-700 uppercase tracking-wide font-mono">{item.label}</p>
                       <p className="text-sm text-slate-300 font-medium truncate">{item.value}</p>
                     </div>
                   </a>
                 ) : (
-                  <div className="glass rounded-2xl p-5 flex items-center gap-4">
-                    <div className="p-2.5 rounded-xl bg-slate-700/50 text-slate-500">
-                      <item.icon size={18} />
+                  <div className="glass p-4 flex items-center gap-4">
+                    <div className="p-2 bg-white/[0.04] text-slate-600 shrink-0">
+                      <item.icon size={16} />
                     </div>
                     <div>
-                      <p className="text-[11px] text-slate-600 uppercase tracking-wide font-mono">{item.label}</p>
+                      <p className="text-[10px] text-slate-700 uppercase tracking-wide font-mono">{item.label}</p>
                       <p className="text-sm text-slate-400">{item.value}</p>
                     </div>
                   </div>
@@ -95,18 +95,18 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Contact form */}
+          {/* Form */}
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="glass rounded-2xl p-6 sm:p-8 space-y-4"
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="glass p-6 sm:p-8 space-y-4"
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-[11px] text-slate-500 uppercase tracking-wide font-mono block mb-1.5">
+                <label className="text-[10px] text-slate-600 uppercase tracking-wide font-mono block mb-1.5">
                   {t(ui.contact.form.name)}
                 </label>
                 <input
@@ -119,7 +119,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="text-[11px] text-slate-500 uppercase tracking-wide font-mono block mb-1.5">
+                <label className="text-[10px] text-slate-600 uppercase tracking-wide font-mono block mb-1.5">
                   {t(ui.contact.form.email)}
                 </label>
                 <input
@@ -134,7 +134,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label className="text-[11px] text-slate-500 uppercase tracking-wide font-mono block mb-1.5">
+              <label className="text-[10px] text-slate-600 uppercase tracking-wide font-mono block mb-1.5">
                 {t(ui.contact.form.message)}
               </label>
               <textarea
@@ -148,7 +148,7 @@ export default function Contact() {
             </div>
 
             {status === "success" && (
-              <p className="text-sm text-cyan-400 font-medium">{t(ui.contact.form.success)}</p>
+              <p className="text-sm text-amber-400 font-medium">{t(ui.contact.form.success)}</p>
             )}
             {status === "error" && (
               <p className="text-sm text-red-400 font-medium">{t(ui.contact.form.error)}</p>
@@ -157,9 +157,9 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending" || status === "success"}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-cyan-400 text-slate-950 font-semibold text-sm hover:bg-cyan-300 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-400 text-black font-semibold text-sm hover:bg-amber-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Send size={15} />
+              <Send size={14} />
               {status === "sending" ? t(ui.contact.form.sending) : t(ui.contact.form.send)}
             </button>
           </motion.form>
@@ -170,10 +170,10 @@ export default function Contact() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="mt-24 pt-8 border-t border-slate-800/50 text-center"
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mt-24 pt-8 border-t border-white/[0.05] text-center"
       >
-        <p className="text-xs text-slate-600 font-mono">
+        <p className="text-xs text-slate-700 font-mono">
           Kevin Mayorga © {new Date().getFullYear()} · {t(ui.contact.footer)}
         </p>
       </motion.div>
